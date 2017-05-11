@@ -8,11 +8,13 @@
 // require is a function that is part of node that is used to load modules.
 // It returns the object exported by the module.
 const express = require('express');
+const logger = require('morgan');
 
 // creates an instance of a web app;
 const app = express();
 
 
+/*
 // unlike app.get, app.get will work for all HTTP Verbs
 // if we do not give a URL for the first argument, it will
 // match for every URL
@@ -21,6 +23,9 @@ app.use((request, response, next)=>{
   next(); //next, a function and third argument of a middleware callback,
           // tells Express to move on to the next middleware
 });
+*/
+
+app.use(logger('dev'));
 
 
 
