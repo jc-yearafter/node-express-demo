@@ -13,6 +13,9 @@ const logger = require('morgan');
 // creates an instance of a web app;
 const app = express();
 
+// Configure Express app to use the ejs templating engine for our app's views
+app.set('view engine', 'ejs')
+
 
 /*
 // unlike app.get, app.get will work for all HTTP Verbs
@@ -47,8 +50,11 @@ app.get('/helloWorld',(request,response)=>{
 });
 
 
-app.get('',(request,response)=>{
-  response.send('Huh?');
+// URL: http://localhost:4545/ VERB: Get
+app.get('/',(request,response)=>{
+  // use the response.render instead of response.send when you want to
+  // show a view from your views folder
+  response.render('index') // start of in views, don't need ./views/
 });
 
 
