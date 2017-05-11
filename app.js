@@ -8,7 +8,6 @@
 // require is a function that is part of node that is used to load modules.
 // It returns the object exported by the module.
 const express = require('express');
-console.log(express)
 
 // creates an instance of a web app;
 const app = express();
@@ -18,10 +17,11 @@ const app = express();
 // we expect somebody to send a 'get' request
 // when someone goes to the path /helloWorld, callBack function runs
 app.get('/helloWorld',(request,response)=>{
+  debugger;
   // request: an object that contains the entire message from the client(usually a browser), use methods on request to get information from browser
   // response: an object that contains the message our server will reply with to the client, use methods on response to send information to the browser
   // This callback (which receives a request & response) is usually named Middleware
-  response.send('Hello World');
+  response.send('Hello World ._.');
 });
 
 
