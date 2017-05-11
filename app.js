@@ -9,6 +9,7 @@
 // It returns the object exported by the module.
 const express = require('express');
 const logger = require('morgan');
+const home = require('./routes/home');
 
 // creates an instance of a web app;
 const app = express();
@@ -29,7 +30,7 @@ app.use((request, response, next)=>{
 */
 
 app.use(logger('dev'));
-
+app.use('/', home);
 
 
 
@@ -49,13 +50,14 @@ app.get('/helloWorld',(request,response)=>{
   response.send('Hello World ._.');
 });
 
-
+/* do it in routes instead
 // URL: http://localhost:4545/ VERB: Get
 app.get('/',(request,response)=>{
   // use the response.render instead of response.send when you want to
   // show a view from your views folder
   response.render('index') // start of in views, don't need ./views/
 });
+*/
 
 
 //
