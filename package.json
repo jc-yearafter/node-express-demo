@@ -1,0 +1,11 @@
+{
+  "name": "inClass",
+  "version": "0.0.0",
+  "description": "Demo for Node & Express i/ii Lessons",
+  "main": "app.js",
+  "author": "Jennifer Cheng",
+  "license": "MIT",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
+}
