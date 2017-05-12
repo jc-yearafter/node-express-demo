@@ -7,7 +7,12 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon app.js",
-    "debug": "nodemon --inspect app.js"
+    "debug": "nodemon --inspect app.js",
+    "db:create": "createdb --echo ned",
+    "db:drop": "dropdb --if-exists --echo ned",
+    "db:migrate": "node ./db/migrate.js",
+    "db:seed": "node ./db/seeds.js",
+    "db:setup": "yarn db:drop && yarn db:create && yarn db:migrate && yarn db:seed"
   },
   "dependencies": {
     "body-parser": "^1.17.1",
@@ -15,7 +20,8 @@
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "faker": "^4.1.0",
-    "morgan": "^1.8.1"
+    "morgan": "^1.8.1",
+    "pg-promise": "^5.6.8"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
