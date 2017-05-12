@@ -1,0 +1,11 @@
+html{
+  /*background-color: Gainsboro;*/
+  font-family: Helvetica, sans-serif;
+  font-weight: 100;
+  background-color: WhiteSmoke;
+}
+
+*{
+  font-family: inherit;
+  font-weight: inherit;
+}

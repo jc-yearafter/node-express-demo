@@ -7,8 +7,10 @@
 
 // require is a function that is part of node that is used to load modules.
 // It returns the object exported by the module.
+const path = require('path');           // gives path.join
 const express = require('express');
 const logger = require('morgan');
+const bodyParser = require('body-parser')
 const home = require('./routes/home');
 
 // creates an instance of a web app;
@@ -25,11 +27,16 @@ app.set('view engine', 'ejs')
 app.use((request, response, next)=>{
   console.log(`${request.method} - ${request.path} - ${new Date().toString()}`)
   next(); //next, a function and third argument of a middleware callback,
-          // tells Express to move on to the next middleware
+// tells Express to move on to the next middleware
 });
 */
 
 app.use(logger('dev'));
+app.use(express.static(path.join(__dirname, 'public')))
+// 👇bodyParser.urlencoded will return middleware that will
+// transform the raw data of the request into a javascript object
+// that will be assigned to req.body
+app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', home);
 
 
