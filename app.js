@@ -12,6 +12,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser')
 const home = require('./routes/home');
+const cookieParser = require('cookie-parser');
 
 // creates an instance of a web app;
 const app = express();
@@ -32,11 +33,23 @@ app.use((request, response, next)=>{
 */
 
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 // 👇bodyParser.urlencoded will return middleware that will
 // transform the raw data of the request into a javascript object
 // that will be assigned to req.body
 app.use(bodyParser.urlencoded({extended: false}));
+
+// a lot of middleware returns a higher order function
+app.use(cookieParser())
+app.use((req,res,next)=>{
+  // req.cookies is an object that has all our cookies
+  const {cookies} = req;  // creates a variable cookies, assign it
+                          // values from req.cookies
+  console.log('🍪', cookies);
+  next();
+});
+
+
 app.use('/', home);
 
 
