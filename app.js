@@ -11,8 +11,10 @@ const path = require('path');           // gives path.join
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser')
-const home = require('./routes/home');
 const cookieParser = require('cookie-parser');
+
+const home = require('./routes/home');
+const posts = require('./routes/posts')
 
 // creates an instance of a web app;
 const app = express();
@@ -50,7 +52,9 @@ app.use((req,res,next)=>{
 });
 
 
+// use routers
 app.use('/', home);
+app.use('/posts', posts)
 
 
 
